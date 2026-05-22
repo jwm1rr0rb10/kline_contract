@@ -1,0 +1,26 @@
+version: v1
+plugins:
+  - plugin: go
+    out: gen/go
+    opt: paths=source_relative
+
+  - plugin: go-grpc
+    out: gen/go
+    opt: paths=source_relative
+
+  - plugin: doc
+    out: gen/doc
+    opt:
+      - markdown,README.md,source_relative
+
+  - plugin: doc
+    out: gen/doc/html
+    strategy: all
+    opt:
+      - html,index.html
+
+  - plugin: doc
+    out: gen/doc/markdown
+    strategy: all
+    opt:
+      - markdown,README.md

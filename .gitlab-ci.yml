@@ -1,0 +1,23 @@
+default:
+  image: docker:29.2.1
+
+stages:
+  - lint
+  - deploy
+
+variables:
+  GIT_SUBMODULE_STRATEGY: normal
+
+lint:
+  stage: lint
+  image: golang:1.26.2
+  script:
+    - make lint
+
+pages:
+  stage: deploy
+  script:
+    - mv ./gen/doc ./public
+  artifacts:
+    paths:
+      - public

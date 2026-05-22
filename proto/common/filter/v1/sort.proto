@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package common.filter.v1;
+
+option go_package = "github.com/jwm1rr0rb10/kline_contract/gen/go/common/filter/v1;pb_common_filter";
+
+// Sorting array.
+message Sort {
+  string field = 1;
+  bool desc = 2;
+}

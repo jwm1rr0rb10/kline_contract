@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package kline_service.v1;
+
+import "common/filter/v1/filter.proto";
+import "common/filter/v1/sort.proto";
+
+option go_package = "github.com/jwm1rr0rb10/kline_contract/gen/go/kline_service/v1;pb_kline_service_v1";
+
+message SearchKlineRequest {}

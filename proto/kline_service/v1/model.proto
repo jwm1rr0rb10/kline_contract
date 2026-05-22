@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package kline_service.v1;
+
+import "kline_service/v1/request.proto";
+import "kline_service/v1/response.proto";
+
+option go_package = "github.com/jwm1rr0rb10/kline_contract/gen/go/kline_service/v1;pb_kline_service_v1";

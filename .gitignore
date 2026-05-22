@@ -1,0 +1,10 @@
+.idea
+.DS_Store
+*/.DS_Store
+
+index.ts
+node_modules
+dist
+*.d.ts
+!dist/**/*.d.ts
+*.log
