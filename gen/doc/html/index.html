@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#common%2ffilter%2fv1%2ffilter.proto">common/filter/v1/filter.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#common.filter.v1.ArrayFloatFieldFilter"><span class="badge">M</span>ArrayFloatFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.ArrayIntFieldFilter"><span class="badge">M</span>ArrayIntFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.ArrayStringFieldFilter"><span class="badge">M</span>ArrayStringFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.BoolFieldFilter"><span class="badge">M</span>BoolFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.FloatFieldFilter"><span class="badge">M</span>FloatFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.IntFieldFilter"><span class="badge">M</span>IntFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.Pagination"><span class="badge">M</span>Pagination</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.RangeIntFieldFilter"><span class="badge">M</span>RangeIntFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.RangeStringFieldFilter"><span class="badge">M</span>RangeStringFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.StringFieldFilter"><span class="badge">M</span>StringFieldFilter</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.StringNumberFieldFilter"><span class="badge">M</span>StringNumberFieldFilter</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#common.filter.v1.ArrayFloatFieldFilter.Operator"><span class="badge">E</span>ArrayFloatFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.ArrayIntFieldFilter.Operator"><span class="badge">E</span>ArrayIntFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.ArrayStringFieldFilter.Operator"><span class="badge">E</span>ArrayStringFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.BoolFieldFilter.Operator"><span class="badge">E</span>BoolFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.FloatFieldFilter.Operator"><span class="badge">E</span>FloatFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.IntFieldFilter.Operator"><span class="badge">E</span>IntFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.RangeIntFieldFilter.Operator"><span class="badge">E</span>RangeIntFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.RangeStringFieldFilter.Operator"><span class="badge">E</span>RangeStringFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.StringFieldFilter.Operator"><span class="badge">E</span>StringFieldFilter.Operator</a>
+                </li>
+              
+                <li>
+                  <a href="#common.filter.v1.StringNumberFieldFilter.Operator"><span class="badge">E</span>StringNumberFieldFilter.Operator</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#common%2ffilter%2fv1%2fsort.proto">common/filter/v1/sort.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#common.filter.v1.Sort"><span class="badge">M</span>Sort</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#kline_service%2fv1%2fmodel.proto">kline_service/v1/model.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#kline_service.v1.Kline"><span class="badge">M</span>Kline</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#kline_service%2fv1%2frequest.proto">kline_service/v1/request.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#kline_service.v1.SearchKlineRequest"><span class="badge">M</span>SearchKlineRequest</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#kline_service%2fv1%2fresponse.proto">kline_service/v1/response.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#kline_service.v1.SearchKlineResponse"><span class="badge">M</span>SearchKlineResponse</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#kline_service%2fv1%2fservice.proto">kline_service/v1/service.proto</a>
+            <ul>
+              
+              
+              
+              
+                <li>
+                  <a href="#kline_service.v1.KlineService"><span class="badge">S</span>KlineService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="common/filter/v1/filter.proto">common/filter/v1/filter.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="common.filter.v1.ArrayFloatFieldFilter">ArrayFloatFieldFilter</h3>
+        <p>Filter for array of int, example: ?price.op=in&price.val=[18.33456, 3.14, 2.72].</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.ArrayFloatFieldFilter.Operator">ArrayFloatFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#float">float</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.ArrayIntFieldFilter">ArrayIntFieldFilter</h3>
+        <p>Filter for array of int, example: ?age.op=in&age.val=[10,20,30].</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.ArrayIntFieldFilter.Operator">ArrayIntFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.ArrayStringFieldFilter">ArrayStringFieldFilter</h3>
+        <p>Filter for array of string, example: ?name.op=in&name.val=["ok","not_ok","done"].</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.ArrayStringFieldFilter.Operator">ArrayStringFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.BoolFieldFilter">BoolFieldFilter</h3>
+        <p>Filter for bool values, example: ?exist.op=is&email.val=true.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.BoolFieldFilter.Operator">BoolFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.FloatFieldFilter">FloatFieldFilter</h3>
+        <p>Filter for float values, example: ?price.op=gt&price.val=18.33456.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.FloatFieldFilter.Operator">FloatFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.IntFieldFilter">IntFieldFilter</h3>
+        <p>Filter for int values, example: ?age.op=gt&age.val=18.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.IntFieldFilter.Operator">IntFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.Pagination">Pagination</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>offset</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.RangeIntFieldFilter">RangeIntFieldFilter</h3>
+        <p>Filter for int range, example: ?price.op=range&price.from=100&price.to=1000.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.RangeIntFieldFilter.Operator">RangeIntFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>from</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>to</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.RangeStringFieldFilter">RangeStringFieldFilter</h3>
+        <p>Filter for string range, example: ?amount.op=range&price.from=987.834&price.to=3987.834.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.RangeStringFieldFilter.Operator">RangeStringFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>from</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>to</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.StringFieldFilter">StringFieldFilter</h3>
+        <p>Filter for string value, example: ?email.op=eq&email.val=me@example.com.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.StringFieldFilter.Operator">StringFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="common.filter.v1.StringNumberFieldFilter">StringNumberFieldFilter</h3>
+        <p>Filter for number as string (decimal) value, example: ?amount.op=gt&email.val=123.456789.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>op</td>
+                  <td><a href="#common.filter.v1.StringNumberFieldFilter.Operator">StringNumberFieldFilter.Operator</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="common.filter.v1.ArrayFloatFieldFilter.Operator">ArrayFloatFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_IN</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_NIN</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.ArrayIntFieldFilter.Operator">ArrayIntFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_IN</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_NIN</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.ArrayStringFieldFilter.Operator">ArrayStringFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_IN</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_NIN</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.BoolFieldFilter.Operator">BoolFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_EQ</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_NEQ</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.FloatFieldFilter.Operator">FloatFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_EQ</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_NEQ</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_LT</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_LTE</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_GT</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_GTE</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.IntFieldFilter.Operator">IntFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_EQ</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_NEQ</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_LT</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_LTE</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_GT</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_GTE</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.RangeIntFieldFilter.Operator">RangeIntFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_RANGE</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.RangeStringFieldFilter.Operator">RangeStringFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_RANGE</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.StringFieldFilter.Operator">StringFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_EQ</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_NEQ</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_LIKE</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_ILIKE</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.filter.v1.StringNumberFieldFilter.Operator">StringNumberFieldFilter.Operator</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPERATOR_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_EQ</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_NEQ</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_LT</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_LTE</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_GT</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>OPERATOR_GTE</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="common/filter/v1/sort.proto">common/filter/v1/sort.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="common.filter.v1.Sort">Sort</h3>
+        <p>Sorting array.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>field</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>desc</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="kline_service/v1/model.proto">kline_service/v1/model.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="kline_service.v1.Kline">Kline</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>kline_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUIDv7. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>symbol</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Trading pair symbol, e.g. BTCUSDT, ETHUSDT. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>interval</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Kline/candlestick interval (timeframe), e.g. 1m, 5m, 15m, 1h, 4h, 1d. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>start_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Start time of the kline (opening time). </p></td>
+                </tr>
+              
+                <tr>
+                  <td>close_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Close time of the kline. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>open_price</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Opening price.
+Stored as string to avoid floating-point precision issues. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>close_price</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Closing price. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>high_price</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Highest price during the interval. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>low_price</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Lowest price during the interval. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>base_asset_volume</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Trading volume in base asset (e.g. amount of BTC traded). </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quote_asset_volume</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Trading volume in quote asset (e.g. amount of USDT traded). </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="kline_service/v1/request.proto">kline_service/v1/request.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="kline_service.v1.SearchKlineRequest">SearchKlineRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>pagination</td>
+                  <td><a href="#common.filter.v1.Pagination">common.filter.v1.Pagination</a></td>
+                  <td></td>
+                  <td><p>Pagination parameters. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>sort</td>
+                  <td><a href="#common.filter.v1.Sort">common.filter.v1.Sort</a></td>
+                  <td></td>
+                  <td><p>Sorting options. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>search</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Search query. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>kline_id_val</td>
+                  <td><a href="#common.filter.v1.StringFieldFilter">common.filter.v1.StringFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for id. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>symbol_val</td>
+                  <td><a href="#common.filter.v1.StringFieldFilter">common.filter.v1.StringFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for symbol. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>interval_val</td>
+                  <td><a href="#common.filter.v1.StringFieldFilter">common.filter.v1.StringFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for interval. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>open_price_val</td>
+                  <td><a href="#common.filter.v1.StringNumberFieldFilter">common.filter.v1.StringNumberFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for open_price. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>close_price_val</td>
+                  <td><a href="#common.filter.v1.StringNumberFieldFilter">common.filter.v1.StringNumberFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for close_price. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>high_price_val</td>
+                  <td><a href="#common.filter.v1.StringNumberFieldFilter">common.filter.v1.StringNumberFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for high_price. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>low_price_val</td>
+                  <td><a href="#common.filter.v1.StringNumberFieldFilter">common.filter.v1.StringNumberFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for low_price. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>base_asset_volume_val</td>
+                  <td><a href="#common.filter.v1.StringNumberFieldFilter">common.filter.v1.StringNumberFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for base_asset_volume. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quote_asset_volume_val</td>
+                  <td><a href="#common.filter.v1.StringNumberFieldFilter">common.filter.v1.StringNumberFieldFilter</a></td>
+                  <td></td>
+                  <td><p>Filter for quote_asset_volume. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>with_count</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Total count of all kline in response. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="kline_service/v1/response.proto">kline_service/v1/response.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="kline_service.v1.SearchKlineResponse">SearchKlineResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>items</td>
+                  <td><a href="#kline_service.v1.Kline">Kline</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>count</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="kline_service/v1/service.proto">kline_service/v1/service.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+
+      
+
+      
+
+      
+        <h3 id="kline_service.v1.KlineService">KlineService</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SearchKline</td>
+                <td><a href="#kline_service.v1.SearchKlineRequest">SearchKlineRequest</a></td>
+                <td><a href="#kline_service.v1.SearchKlineResponse">SearchKlineResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+

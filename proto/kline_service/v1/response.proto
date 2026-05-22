@@ -6,4 +6,7 @@ import "kline_service/v1/model.proto";
 
 option go_package = "github.com/jwm1rr0rb10/kline_contract/gen/go/kline_service/v1;pb_kline_service_v1";
 
-message  SearchKlineResponse {}
+message SearchKlineResponse {
+  repeated Kline items = 1;
+  optional uint64 count = 2;
+}

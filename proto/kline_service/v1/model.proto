@@ -2,7 +2,32 @@ syntax = "proto3";
 
 package kline_service.v1;
 
-import "kline_service/v1/request.proto";
-import "kline_service/v1/response.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/jwm1rr0rb10/kline_contract/gen/go/kline_service/v1;pb_kline_service_v1";
+
+message Kline {
+  // UUIDv7.
+  string kline_id = 1;
+  // Trading pair symbol, e.g. BTCUSDT, ETHUSDT.
+  string symbol = 2;
+  // Kline/candlestick interval (timeframe), e.g. 1m, 5m, 15m, 1h, 4h, 1d.
+  string interval = 3;
+  // Start time of the kline (opening time).
+  google.protobuf.Timestamp start_time = 4;
+  // Close time of the kline.
+  google.protobuf.Timestamp close_time = 5;
+  // Opening price.
+  // Stored as string to avoid floating-point precision issues.
+  string open_price = 6;
+  // Closing price.
+  string close_price = 7;
+  // Highest price during the interval.
+  string high_price = 8;
+  // Lowest price during the interval.
+  string low_price = 9;
+  // Trading volume in base asset (e.g. amount of BTC traded).
+  string base_asset_volume = 10;
+  // Trading volume in quote asset (e.g. amount of USDT traded).
+  string quote_asset_volume = 11;
+}

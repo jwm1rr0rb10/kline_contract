@@ -7,8 +7,6 @@ import "kline_service/v1/response.proto";
 
 option go_package = "github.com/jwm1rr0rb10/kline_contract/gen/go/kline_service/v1;pb_kline_service_v1";
 
-
 service KlineService {
   rpc SearchKline(SearchKlineRequest) returns (SearchKlineResponse) {}
-
 }

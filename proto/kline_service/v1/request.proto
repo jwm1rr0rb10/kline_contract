@@ -7,4 +7,31 @@ import "common/filter/v1/sort.proto";
 
 option go_package = "github.com/jwm1rr0rb10/kline_contract/gen/go/kline_service/v1;pb_kline_service_v1";
 
-message SearchKlineRequest {}
+message SearchKlineRequest {
+  // Pagination parameters.
+  common.filter.v1.Pagination pagination = 1;
+  // Sorting options.
+  common.filter.v1.Sort sort = 2;
+  // Search query.
+  optional string search = 3;
+  // Filter for id.
+  common.filter.v1.StringFieldFilter kline_id_val = 4;
+  // Filter for symbol.
+  common.filter.v1.StringFieldFilter symbol_val = 5;
+  // Filter for interval.
+  common.filter.v1.StringFieldFilter interval_val = 6;
+  // Filter for open_price.
+  common.filter.v1.StringNumberFieldFilter open_price_val = 7;
+  // Filter for close_price.
+  common.filter.v1.StringNumberFieldFilter close_price_val = 8;
+  // Filter for high_price.
+  common.filter.v1.StringNumberFieldFilter high_price_val = 9;
+  // Filter for low_price.
+  common.filter.v1.StringNumberFieldFilter low_price_val = 10;
+  // Filter for base_asset_volume.
+  common.filter.v1.StringNumberFieldFilter base_asset_volume_val = 11;
+  // Filter for quote_asset_volume.
+  common.filter.v1.StringNumberFieldFilter quote_asset_volume_val = 12;
+  // Total count of all kline in response.
+  bool with_count = 13;
+}
