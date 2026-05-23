@@ -20,5 +20,3 @@ machine github.com
   password <token>
 ```
 and set the environment variable `GOPRIVATE` to `github.com/jwm1rr0rb10/kline_contract/common/*`
-T[fkf,tkrfyfntkt;rt10
-T[fkf,tkrfyfntktlrt10
