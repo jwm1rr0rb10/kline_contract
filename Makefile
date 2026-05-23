@@ -2,7 +2,7 @@
 all: clean format lint gen
 
 BUF_VERSION=1.28.1
-NAMES= common currency_service
+NAMES= common kline_service
 
 .PHONY: install-plugins
 install-plugins:
