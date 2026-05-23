@@ -1,3 +1,5 @@
+github.com/jwm1rr0rb10/kline_contract/gen/go/common v1.0.0 h1:tle9VZmva4iuUkayzwoDBkliZ6QYFBzHvuImLHxrJPo=
+github.com/jwm1rr0rb10/kline_contract/gen/go/common v1.0.0/go.mod h1:IIq/5n2ZT0L93h+Af15kH7DuGkfptt+QxFVzMpJjsVg=
 golang.org/x/net v0.55.0 h1:bcvxaJn3e1U6InsFWt1JUq1aSjnRxLzT2rtD2KfkDF8=
 golang.org/x/net v0.55.0/go.mod h1:L5U2KuzuOe1lY7Z+aWVIKK6qEeJXnXV9yzGA+WCHJww=
 golang.org/x/sys v0.45.0 h1:dO4czNzziLiiXplLQgBCEpCvXQ3dnkn0SdaZSYdQ+FY=

@@ -2,8 +2,10 @@ syntax = "proto3";
 
 package common.filter.v1;
 
-option go_package = "github.com/jwm1rr0rb10/kline_contract/gen/go/common/filter/v1;pb_common_filter";
+option go_package = "github.com/jwm1rr0rb10/kline_contracts/gen/go/common/filter/v1;pb_common_filter";
 
+// we need for make pages.
+// example:  all page should be have 100 elemets(profile users). limit how much. offset - with element.
 message Pagination {
   uint64 limit = 1;
   uint64 offset = 2;
